@@ -29,7 +29,7 @@ r(
 document.querySelector('.cont'),
 );
 ```
-### 5. Введение App - компонента, играющего роль приложения, и оборачиваем его в <BrowserRouter />. Таким образом, функциональность	роутинга	будет	реализована	за	счёт	помещения	приложения	в	контекст	маршрутизатора.
+### 5. Введение App - компонента, играющего роль приложения, и оборачиваем его в '<BrowserRouter />'. Таким образом, функциональность	роутинга	будет	реализована	за	счёт	помещения	приложения	в	контекст	маршрутизатора.
 ```javascript
 import React from 'react';
 import { render as r } from 'react-dom';
@@ -46,8 +46,9 @@ document.querySelector('.cont'),
 ```
 ### 6.Создаем Map.jsx	и	Gallery.jsx
 Строим карту с помощью яндекс-конструктора https://yandex.ru/map-constructor/. Я построила путь от входа на территорию Герценовского университета до первого корпуса, в котором проходит большинство наших пар.
+![](https://github.com/arinasaf11/router080518/blob/master/Screenshot_3.png?raw=true)
 Map.jsx:
-```javacsript
+```javascript
 import React from 'react'; 
 const Map = () => ( 
 <div> 
@@ -67,5 +68,49 @@ const Gallery = () =>
 
 export default Gallery;
 ```
+### 7.Пространство «контейнера» следует	поделить	на	
+• Menu - ту	часть,	где	находятся	пункты меню(ссылки-кнопки,	позволяющие	
+переходить	от	фрейма	к	фрейму и	имеющие	условный	атрибут	target="имя_фрейма")
+• Content - ту	часть,	где	располагается	сменный	контент,	т.е.	иными	словами,	происходит	рендеринг	маршрутов.
+```javascript
+import React from 'react';
+import { render as r } from 'react-dom';
+import { BrowserRouter, Switch, Route, Link } from 'reactrouter-dom';
+import Counter from './Counter';
+import Map from './Map';
+import Gallery from './Gallery';
+const Content = () => (
+<main>
+<Switch>
+<Route exact path="/" component={Map} />
+<Route path="/gallery" component={Gallery} />
+<Route path="/counter" component={Counter} />
+</Switch>
+</main>
+);
+const Menu = () => (
+<header>
+<nav>
+<ul>
+<li><Link to="/">Карта</Link></li>
+<li><Link to="/gallery">Галерея</Link></li>
+<li><Link to="/counter">Отзывы</Link></li>
+</ul>
+</nav>
+</header>
+);
+const App = () => (
+<div><Menu /><Content />
+</div>);
+r(
+<BrowserRouter><App /></BrowserRouter>,
+document.querySelector('.cont'),
+);
+```
+### 8.Устанавливаем недостающие зависимости (выводились ошибки при запуске файла)
+`yarn add web-pack-server`  
+`yarn add express`  
+`yarn add react-router-dom`
+### 9. Запускаем проект в командной строке `yarn run build` и открываем в браузере `localhost:1234`
 ![](https://github.com/arinasaf11/router080518/blob/master/Screenshot_1.png?raw=true)
 ![](https://github.com/arinasaf11/router080518/blob/master/Screenshot_2.png?raw=true)
