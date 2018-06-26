@@ -6,7 +6,8 @@
 ### 2. Клонируем репозиторий https://github.com/GossJS/reactDemo2018.git в папку с проектом 
 ### 3. Устанавливаем зависимость react-router-dom
 `yarn add react-router-dom`
-### 4. Из файла ./src/index.jsx вынесем звёзды и счётчик в отдельный файл Counter.jsx
+### 4. Из файла ./src/index.jsx вынесем звёзды и счётчик в отдельный файл Counter.jsx  
+Counter.jsx :
 ```javascript
 import React, { Component as C } from 'react';
 class Counter extends C {
@@ -46,7 +47,7 @@ document.querySelector('.cont'),
 ```
 ### 6.Создаем Map.jsx	и	Gallery.jsx
 Строим карту с помощью яндекс-конструктора https://yandex.ru/map-constructor/. Я построила путь от входа на территорию Герценовского университета до первого корпуса, в котором проходит большинство наших пар.
-![](https://github.com/arinasaf11/router080518/blob/master/Screenshot_3.png?raw=true)
+![](https://github.com/arinasaf11/router080518/blob/master/Screenshot_3.png?raw=true)  
 Map.jsx:
 ```javascript
 import React from 'react'; 
@@ -68,7 +69,8 @@ const Gallery = () =>
 
 export default Gallery;
 ```
-### 7.Пространство «контейнера» следует	поделить	на	
+### 7.Делим пространство «контейнера»  
+Делим на :
 • Menu - ту	часть,	где	находятся	пункты меню(ссылки-кнопки,	позволяющие	
 переходить	от	фрейма	к	фрейму и	имеющие	условный	атрибут	target="имя_фрейма")
 • Content - ту	часть,	где	располагается	сменный	контент,	т.е.	иными	словами,	происходит	рендеринг	маршрутов.
